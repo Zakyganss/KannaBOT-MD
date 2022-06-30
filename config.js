@@ -64,9 +64,9 @@ global.nameown = 'ZakYGanS'
 
 /*============== STAFF ==============*/
 global.owner = [
+  ['6287863932701'],
   ['6281365255567'],
-  ['6281365255567'],
-  ['6281365255567'],
+  ['6287863932701'],
   ['6281365255567', 'ZakYGanS', true]
   // [number, dia creator/owner?, dia developer?]
 ] // Put your number here
