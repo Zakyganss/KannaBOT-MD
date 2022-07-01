@@ -1,31 +1,28 @@
-import fetch from 'node-fetch'
+import { tiktokdl } from '@bochilteam/scraper'
 
-let handler = async (m, { conn, text, usedPrefix }) => {
-	if (!text) throw 'Input URL' 
-	if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(text)) throw 'Invalid URL'
-	let url = (await fetch(text)).url
-	let res = await (await fetch(`https://server1.majhcc.xyz/api/tk?url=${url}`)).json()
-	if (res.success !== true) throw res.error
-	let meta = await getInfo(url).catch(console.log)
-	await m.reply('_In progress, please wait..._')
-	let buttons = [{ buttonText: { displayText: 'Audio' }, buttonId: `${usedPrefix}tomp3` }]
-	conn.sendMessage(m.chat, { video: { url: res.link }, caption: meta?.description || res?.description, footer: await shortUrl(res.link), buttons }, { quoted: m })
-	// conn.sendMessage(m.chat, { video : { url: res.link }, caption: description }, { quoted: m })
+let handler = async (m, { conn, args, usedPrefix, command }) => {
+if (!args[0]) throw `Use example ${usedPrefix}${command} https://www.tiktok.com/@omagadsus/video/7025456384175017243`
+    const { author: { nickname }, video, description } = await tiktokdl(args[0])
+    const url = video.no_watermark || video.no_watermark2 || video.no_watermark_raw
+    if (!url) throw 'Can\'t download video!'
+   let caption = `                   *「 T I K T O K 」*
+                 ████████▀▀▀████
+                 ████████────▀██
+                 ████████──█▄──█
+                 ███▀▀▀██──█████
+                 █▀──▄▄██──█████
+                 █──█████──█████
+                 █▄──▀▀▀──▄█████
+                 ███▄▄▄▄▄███████
+──────────────────────────
+*📛 Title:* ${data.title}
+*🖼️ Quality:* ${data.medias[1].quality}
+*📊 Size:* ${data.medias[1].forrmattedSize}`
+    await conn.sendHydrated(m.chat, caption, global.wm, data.medias[1].url, `${args[0]}`, 'Done😊', null, null, [[null, null],[null,null],[null,null]], m) 
+    })
 }
-handler.help = ['tiktok']
+handler.help = ['tiktok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-
-handler.command = /^(tt|tiktok)(dl|nowm)?$/i
+handler.command = /^(tik(tok)?)$/i
 
 export default handler
-
-async function getInfo(url) {
-	// url = (await fetch(url)).url
-	let id = url.split('?')[0].split('/')
-	let res = await (await fetch(`https://www.tiktok.com/node/share/video/${id[3]}/${id[5]}/`)).json()
-	return res?.seoProps?.metaParams
-}
-
-async function shortUrl(url) {
-	return await (await fetch(`https://tinyurl.com/api-create.php?url=${url}`)).text()
-}
