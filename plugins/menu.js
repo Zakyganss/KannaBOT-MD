@@ -216,21 +216,21 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
     let mpt = clockString(_mpt)
       const sections = [
    {
-	title: `${htki} MAIN ${htka}`,
+	title: `${htki} INFO BANH ${htka}`,
 	rows: [
 	    {title: `⚡ ${pmenus} SPEED BOT`, rowId: ".ping", description: "Menampilkan kecepatan respon BOT"},
 	    {title: `💌 ${pmenus} OWNER BOT`, rowId: ".owner", description: "Menampilkan List owner BOT"},
 	    {title: `📔 ${pmenus} SCRIPT BOT`, rowId: ".sc", description: `Source Code ${namebot}`},
 	]
     },{
-	title: `${htki} SUPPORT ${htka}`,
+	title: `${htki} PREMIUM ${htka}`,
 	rows: [
 	    {title: `🔖 ${pmenus} SEWA`, rowId: ".sewa", description: "Menampilkan list harga sewa BOT"},
 	    {title: `🌟 ${pmenus} BUY PREMIUM`, rowId: ".premium", description: "Menampilkan list harga premium"},
 	    {title: `💹 ${pmenus} DONASI`, rowId: ".donasi", description: 'Support BOT agar lebih fast respon'},
 	]
 	},{
-	title: `${htki} MENU ${htka}`,
+	title: `${htki} MENU SINI BANG ${htka}`,
 	rows: [
 	    {title: `💬 ${pmenus} All`, rowId: ".? all", description: "Menampilkan Semua command BOT"},
 	    {title: `🌱 ${pmenus} Rpg`, rowId: ".? rpg", description: "Game Epic Rpg!"},
@@ -262,21 +262,31 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
 
 let usrs = db.data.users[m.sender]
 let tek = `*${ucapan()} ${conn.getName(m.sender)}*
-*U S E R  I N F O*
-• *ɴᴀᴍᴇ:* ${usrs.registered ? usrs.name : conn.getName(m.sender)}
-• *ᴛᴀɢs:* @${m.sender.split`@`[0]}
-• *sᴛᴀᴛᴜs:* ${m.sender.split`@`[0] == nomorown ? 'Developer' : (usrs.premiumTime >= 1 ? 'Premium User' : 'Free User')}
-• *ᴘʀᴇᴍɪᴜᴍ:* ${usrs.premiumTime > 1 ? 'Yes': 'No'}
+                 ████████▀▀▀████Z
+                 ████████────▀██A
+                 ████████──█▄──█K
+                 ███▀▀▀██──█████Y
+                 █▀──▄▄██──█████😪
+                 █──█████──█████B
+                 █▄──▀▀▀──▄█████O
+                 ███▄▄▄▄▄███████T
+*ZAKYBOT-MD😉*
+*WARNING* 
+*BAGI PENGGUNA BOT TOLONG JANGAN SPAM!!!*
+*👤U S E R  I N F O*
+• *👩‍💻ɴᴀᴍᴇ:* ${usrs.registered ? usrs.name : conn.getName(m.sender)}
+• *🗣️ᴛᴀɢs:* @${m.sender.split`@`[0]}
+• *💌sᴛᴀᴛᴜs:* ${m.sender.split`@`[0] == nomorown ? 'Developer' : (usrs.premiumTime >= 1 ? 'Premium User' : 'Free User')}
+• *🌠ᴘʀᴇᴍɪᴜᴍ:* ${usrs.premiumTime > 1 ? 'Yes': 'No'}
 
-*S T A T U S  I N F O*
-• *ᴜᴘᴛɪᴍᴇ:* ${mpt}
-• *ᴛɪᴍᴇ:* ${moment.tz('Asia/Jakarta').format('HH')} H  ${moment.tz('Asia/Jakarta').format('mm')} M  ${moment.tz('Asia/Jakarta').format('ss')} S
-• *ᴜsᴇʀs:* ${Object.keys(global.db.data.users).length}
-• *ʟɪᴍɪᴛ:* ${usrs.limit}
-• *ʟᴇᴠᴇʟ:* ${usrs.level}
-• *ʀᴏʟᴇ:* ${usrs.role}${usrs.premiumTime > 1 ? `
-• *ᴇxᴘɪʀᴇᴅ ᴘʀᴇᴍɪᴜᴍ:*
-${clockStringP(usrs.premiumTime - new Date())}` : ''}
+*💹S T A T U S  I N F O*
+• *⏲️ᴜᴘᴛɪᴍᴇ:* ${mpt}
+• *⏰ᴛɪᴍᴇ:* ${moment.tz('Asia/Jakarta').format('HH')} H  ${moment.tz('Asia/Jakarta').format('mm')} M  ${moment.tz('Asia/Jakarta').format('ss')} S
+• *👥ᴜsᴇʀs:* ${Object.keys(global.db.data.users).length}
+• *💳ʟɪᴍɪᴛ:* ${usrs.limit}
+• *📊ʟᴇᴠᴇʟ:* ${usrs.level}
+• *🎮ʀᴏʟᴇ:* ${usrs.role}${usrs.premiumTime > 1 ? `
+• *⭐ᴇxᴘɪʀᴇᴅ ᴘʀᴇᴍɪᴜᴍ:* ${clockStringP(usrs.premiumTime - new Date())}` : ''}
 `
 const listMessage = {
   text: tek,
