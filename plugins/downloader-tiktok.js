@@ -6,23 +6,12 @@ if (!args[0]) throw `Use example ${usedPrefix}${command} https://www.tiktok.com/
     const url = video.no_watermark || video.no_watermark2 || video.no_watermark_raw
     if (!url) throw 'Can\'t download video!'
     conn.sendFile(m.chat, url, 'tiktok.mp4', `
-    let caption = `                   *「 T I K T O K 」*
-                 ████████▀▀▀████
-                 ████████────▀██
-                 ████████──█▄──█
-                 ███▀▀▀██──█████
-                 █▀──▄▄██──█████
-                 █──█████──█████
-                 █▄──▀▀▀──▄█████
-                 ███▄▄▄▄▄███████
-──────────────────────────
-*👤Nickname:* ${nickname}
-*🖼️Description:* ${description}
+*Nickname:* ${nickname}
+*Description:* ${description}
 `.trim(), m)
 }
 handler.help = ['tiktok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-handler.command = /^(tt|tiktok)(dl|nowm)?$/i
-
+handler.command = /^(tiktok|tk|tkdl|td)$/i
 
 export default handler
